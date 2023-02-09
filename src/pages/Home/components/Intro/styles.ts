@@ -17,6 +17,10 @@ export const IntroWrapper = styled.section`
   width: 100%;
   max-width: 1200px;
   padding: 0 0.5rem;
+
+  @media only screen and (max-device-width: 1024px) {
+    flex-direction: column;
+  }
 `;
 
 export const IntroContent = styled.div`
@@ -35,15 +39,24 @@ export const IntroTitle = styled.h1`
   line-height: 130%;
   font-weight: 700;
   color: ${(props) => props.theme.title};
+
+  @media only screen and (max-device-width: 1024px) {
+    text-align: center;
+  }
 `;
 
-export const IntroSubtitle = styled.h1`
+export const IntroSubtitle = styled.p`
   font-family: "Roboto", sans-serif;
   font-size: 1.25rem;
   line-height: 130%;
   font-weight: 400;
   color: ${(props) => props.theme.subtitle};
   margin-top: 1rem;
+  width: 100%;
+
+  @media only screen and (max-device-width: 1024px) {
+    text-align: center;
+  }
 `;
 
 export const IntroItems = styled.div`
@@ -53,6 +66,16 @@ export const IntroItems = styled.div`
   align-items: center;
   gap: 2.5rem;
   margin-top: 4.125rem;
+  width: 100%;
+
+  @media only screen and (max-device-width: 1024px) {
+    justify-content: center;
+  }
+
+  @media only screen and (max-device-width: 510px) {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
 `;
 
 export const IntroList = styled.ul`
@@ -69,6 +92,11 @@ export const IntroListItem = styled.li`
   justify-content: flex-start;
   align-items: center;
   gap: 0.75rem;
+
+  @media only screen and (max-device-width: 510px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 export const IntroImage = styled.div`
@@ -76,4 +104,13 @@ export const IntroImage = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
+
+  @media only screen and (max-device-width: 1024px) {
+    margin-bottom: 5.875rem;
+    justify-content: center;
+
+    img {
+      width: 85%;
+    }
+  }
 `;
