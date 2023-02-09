@@ -13,7 +13,8 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1120px;
+  max-width: 1200px;
+  padding: 0 0.5rem;
 `;
 
 export const HeaderActions = styled.div`
