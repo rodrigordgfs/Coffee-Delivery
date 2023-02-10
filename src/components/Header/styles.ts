@@ -52,4 +52,22 @@ export const HeaderCart = styled.div`
   border-radius: 0.5rem;
   background-color: ${(props) => props.theme["yellow-light"]};
   cursor: pointer;
+
+  span {
+    margin-top: -15px;
+    margin-right: -35px;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.75rem;
+    line-height: 130%;
+    font-weight: 700;
+    background-color: ${(props) => props.theme["yellow-dark"]};
+    color: ${(props) => props.theme.white};
+    height: 1.25rem;
+    width: 1.25rem;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;

@@ -18,6 +18,7 @@ interface IOrderContext {
   removeProduct: (coffeeID: string) => void;
   quantityOfProduct: (coffeeID: string) => number;
   totalPriceQuantity: (coffeeID: string) => number;
+  productsQuantity: () => number;
 }
 
 interface IOrderContextProps {
@@ -71,6 +72,10 @@ export function OrderContextProvider({ children }: IOrderContextProps) {
     return 0;
   }
 
+  function productsQuantity() {
+    return products.reduce((acc, product) => acc + product.quantity, 0);
+  }
+
   return (
     <OrderContext.Provider
       value={{
@@ -81,6 +86,7 @@ export function OrderContextProvider({ children }: IOrderContextProps) {
         removeProduct,
         quantityOfProduct,
         totalPriceQuantity,
+        productsQuantity,
       }}
     >
       {children}

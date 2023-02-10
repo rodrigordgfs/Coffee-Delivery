@@ -9,9 +9,12 @@ import Logo from "../../assets/Logo.svg";
 import Location from "../../assets/icons/Location.svg";
 import Cart from "../../assets/icons/Cart.svg";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { OrderContext } from "../../context/Order";
 
 export function Header() {
   const navigate = useNavigate()
+  const { productsQuantity } = useContext(OrderContext)
 
   function handleGoToCheckout() {
     navigate('/checkout')
@@ -33,6 +36,7 @@ export function Header() {
             </HeaderLocation>
             <HeaderCart onClick={handleGoToCheckout}>
               <img src={Cart} />
+              <span>{productsQuantity()}</span>
             </HeaderCart>
           </HeaderActions>
         </HeaderWrapper>
