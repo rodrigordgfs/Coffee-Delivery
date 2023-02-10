@@ -22,6 +22,8 @@ interface IOrderContext {
   removeProduct: (coffeeID: string) => void;
   deliveryFee: number;
   totalAmmountProducts: () => number;
+  fillAddress: (data: IAddress) => void;
+  isProductsEmpty: () => boolean;
 }
 
 interface IOrderContextProps {
@@ -38,6 +40,10 @@ export function OrderContextProvider({ children }: IOrderContextProps) {
   const { coffees } = useContext(CoffeesContext);
 
   const deliveryFee = 7.55;
+
+  function isProductsEmpty() {
+    return products.length === 0;
+  }
 
   function increaseProduct(coffeeID: string) {
     const product = products.find((product) => product.coffeeID === coffeeID);
@@ -101,6 +107,10 @@ export function OrderContextProvider({ children }: IOrderContextProps) {
     );
   }
 
+  function fillAddress(value: IAddress) {
+    setAddress((prev) => ({ ...prev, ...value }));
+  }
+
   return (
     <OrderContext.Provider
       value={{
@@ -115,6 +125,8 @@ export function OrderContextProvider({ children }: IOrderContextProps) {
         removeProduct,
         deliveryFee,
         totalAmmountProducts,
+        fillAddress,
+        isProductsEmpty,
       }}
     >
       {children}

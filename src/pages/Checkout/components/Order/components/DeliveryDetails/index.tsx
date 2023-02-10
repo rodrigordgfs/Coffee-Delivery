@@ -6,8 +6,12 @@ import {
   DeliveryDetailsWrapper,
 } from "./styles";
 import LocationYellow from "../../../../../../assets/icons/LocationYellow.svg";
+import { useContext } from "react";
+import { OrderContext } from "../../../../../../context/Order";
 
 export function DeliveryDetails() {
+  const { fillAddress } = useContext(OrderContext);
+
   return (
     <DeliveryDetailsWrapper>
       <DeliveryDetailsHeader>
@@ -18,13 +22,34 @@ export function DeliveryDetails() {
         </DeliveryDetailsHeaderContent>
       </DeliveryDetailsHeader>
       <DeliveryDetailsForm>
-        <DeliveryDetailsFormInput placeholder="CEP" />
-        <DeliveryDetailsFormInput placeholder="Rua" />
-        <DeliveryDetailsFormInput placeholder="Numero" />
-        <DeliveryDetailsFormInput placeholder="Complemento" />
-        <DeliveryDetailsFormInput placeholder="Bairro" />
-        <DeliveryDetailsFormInput placeholder="Cidade" />
-        <DeliveryDetailsFormInput placeholder="Estado" />
+        <DeliveryDetailsFormInput
+          placeholder="CEP"
+          onChange={(e) => fillAddress({ CEP: e.target.value })}
+        />
+        <DeliveryDetailsFormInput
+          placeholder="Rua"
+          onChange={(e) => fillAddress({ rua: e.target.value })}
+        />
+        <DeliveryDetailsFormInput
+          placeholder="Numero"
+          onChange={(e) => fillAddress({ numero: e.target.value })}
+        />
+        <DeliveryDetailsFormInput
+          placeholder="Complemento"
+          onChange={(e) => fillAddress({ complemento: e.target.value })}
+        />
+        <DeliveryDetailsFormInput
+          placeholder="Bairro"
+          onChange={(e) => fillAddress({ bairro: e.target.value })}
+        />
+        <DeliveryDetailsFormInput
+          placeholder="Cidade"
+          onChange={(e) => fillAddress({ cidade: e.target.value })}
+        />
+        <DeliveryDetailsFormInput
+          placeholder="Estado"
+          onChange={(e) => fillAddress({ estado: e.target.value })}
+        />
       </DeliveryDetailsForm>
     </DeliveryDetailsWrapper>
   );
