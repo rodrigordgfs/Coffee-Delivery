@@ -22,13 +22,15 @@ import { OrderContext } from "../../../../context/Order";
 
 export function OurCoffes() {
   const { coffees } = useContext(CoffeesContext);
-  const { addProduct, removeProduct, quantityOfProduct } =
+  const { increaseProduct, decreaseProduct, quantityOfProduct } =
     useContext(OrderContext);
 
   const formCurrency = new Intl.NumberFormat("pt-BR", {
     currency: "BRL",
     minimumFractionDigits: 2,
   });
+
+  function handleGoToCheckout(coffeID: string) {}
 
   return (
     <OurCoffeesContainer>
@@ -56,16 +58,18 @@ export function OurCoffes() {
                   <CoffeeCardActions>
                     <CoffeeCardQuantity>
                       <CoffeeCardQuantityButton
-                        onClick={() => removeProduct(id)}
+                        onClick={() => decreaseProduct(id)}
                       >
                         <Minus width={14} />
                       </CoffeeCardQuantityButton>
                       <span>{quantityOfProduct(id)}</span>
-                      <CoffeeCardQuantityButton onClick={() => addProduct(id)}>
+                      <CoffeeCardQuantityButton
+                        onClick={() => increaseProduct(id)}
+                      >
                         <Plus width={14} />
                       </CoffeeCardQuantityButton>
                     </CoffeeCardQuantity>
-                    <CoffeeCardAddCart>
+                    <CoffeeCardAddCart onClick={() => handleGoToCheckout(id)}>
                       <ShoppingCart width={22} />
                     </CoffeeCardAddCart>
                   </CoffeeCardActions>

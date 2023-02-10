@@ -13,15 +13,15 @@ import { useContext } from "react";
 import { OrderContext } from "../../context/Order";
 
 export function Header() {
-  const navigate = useNavigate()
-  const { productsQuantity } = useContext(OrderContext)
+  const navigate = useNavigate();
+  const { productsQuantity } = useContext(OrderContext);
 
   function handleGoToCheckout() {
-    navigate('/checkout')
+    navigate("/checkout");
   }
 
   function handleGoToHome() {
-    navigate('/')
+    navigate("/");
   }
 
   return (
@@ -36,7 +36,7 @@ export function Header() {
             </HeaderLocation>
             <HeaderCart onClick={handleGoToCheckout}>
               <img src={Cart} />
-              <span>{productsQuantity()}</span>
+              {productsQuantity() > 0 && <span>{productsQuantity()}</span>}
             </HeaderCart>
           </HeaderActions>
         </HeaderWrapper>

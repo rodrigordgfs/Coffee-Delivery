@@ -9,8 +9,8 @@ import { OrderContextProvider } from "../context/Order";
 
 export function Router() {
   return (
-    <OrderContextProvider>
-      <CoffeesContextProvider>
+    <CoffeesContextProvider>
+      <OrderContextProvider>
         <Routes>
           <Route path="/" element={<DefaultLayout />}>
             <Route path="/" element={<Home />} />
@@ -18,7 +18,7 @@ export function Router() {
             <Route path="/success" element={<Success />} />
           </Route>
         </Routes>
-      </CoffeesContextProvider>
-    </OrderContextProvider>
+      </OrderContextProvider>
+    </CoffeesContextProvider>
   );
 }

@@ -15,6 +15,9 @@ import {
 import { Minus, Plus, Trash } from "phosphor-react";
 import ExpressoAmericano from "../../../../../../assets/Coffees/ExpressoAmericano.png";
 import Capuccino from "../../../../../../assets/Coffees/Capuccino.png";
+import { useContext } from "react";
+import { OrderContext } from "../../../../../../context/Order";
+import currencyBRL from "../../../../../../utils/currencyFormat";
 
 const SELECTED_COFFEES = [
   {
@@ -34,32 +37,41 @@ const SELECTED_COFFEES = [
 ];
 
 export function CoffeesList() {
-  const formCurrency = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-    minimumFractionDigits: 2,
-  });
+  const {
+    selectedProductsList,
+    increaseProduct,
+    decreaseProduct,
+    removeProduct,
+  } = useContext(OrderContext);
+
+  const products = selectedProductsList();
 
   return (
     <>
-      {SELECTED_COFFEES.map((coffee) => {
+      {products.map((coffee) => {
         return (
-          <CoffeesListWrapper key={coffee.id}>
+          <CoffeesListWrapper key={coffee.coffeeID}>
             <ProductOrderItem>
               <ProductOrderItemImage src={coffee.image} />
               <ProductOrderItemContent>
-                <ProductOrderItemTitle>{coffee.name}</ProductOrderItemTitle>
+                <ProductOrderItemTitle>{coffee.title}</ProductOrderItemTitle>
                 <ProductOrderItemActions>
                   <ProductOrderItemQuantity>
-                    <ProductOrderItemQuantityIcon>
+                    <ProductOrderItemQuantityIcon
+                      onClick={() => decreaseProduct(coffee.coffeeID)}
+                    >
                       <Minus width={14} />
                     </ProductOrderItemQuantityIcon>
                     <span>{coffee.quantity}</span>
-                    <ProductOrderItemQuantityIcon>
+                    <ProductOrderItemQuantityIcon
+                      onClick={() => increaseProduct(coffee.coffeeID)}
+                    >
                       <Plus width={14} />
                     </ProductOrderItemQuantityIcon>
                   </ProductOrderItemQuantity>
-                  <ProductOrderItemRemove>
+                  <ProductOrderItemRemove
+                    onClick={() => removeProduct(coffee.coffeeID)}
+                  >
                     <ProductOrderItemRemoveIcon>
                       <Trash width={16} />
                     </ProductOrderItemRemoveIcon>
@@ -68,7 +80,7 @@ export function CoffeesList() {
                 </ProductOrderItemActions>
               </ProductOrderItemContent>
               <ProductOrderItemPrice>
-                {formCurrency.format(coffee.price)}
+                {currencyBRL.format(Number(coffee.price))}
               </ProductOrderItemPrice>
             </ProductOrderItem>
             <ProductOrderItemDivider />

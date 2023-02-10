@@ -1,33 +1,28 @@
+import { useContext } from "react";
 import {
   OrderResumeTotalContainer,
   OrderResumeTotalItem,
   OrderResumeTotalValue,
 } from "./styles";
+import { OrderContext } from "../../../../../../context/Order";
+import currencyBRL from "../../../../../../utils/currencyFormat";
 
 export function OrderResumeTotal() {
-  const totalItems = 12.76;
-  const deliveryFee = 5.6;
-  const total = totalItems + deliveryFee;
-
-  const formCurrency = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-    minimumFractionDigits: 2,
-  });
+  const { deliveryFee, totalAmmountProducts } = useContext(OrderContext);
 
   return (
     <OrderResumeTotalContainer>
       <OrderResumeTotalItem>
         <span>Total de itens</span>
-        <span>{formCurrency.format(totalItems)}</span>
+        <span>{currencyBRL.format(totalAmmountProducts())}</span>
       </OrderResumeTotalItem>
       <OrderResumeTotalItem>
         <span>Entrega</span>
-        <span>{formCurrency.format(deliveryFee)}</span>
+        <span>{currencyBRL.format(deliveryFee)}</span>
       </OrderResumeTotalItem>
       <OrderResumeTotalValue>
         <span>Total</span>
-        <span>{formCurrency.format(total)}</span>
+        <span>{currencyBRL.format(deliveryFee + totalAmmountProducts())}</span>
       </OrderResumeTotalValue>
     </OrderResumeTotalContainer>
   );
