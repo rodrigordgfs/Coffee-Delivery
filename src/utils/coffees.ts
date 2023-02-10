@@ -15,7 +15,7 @@ import Irlandes from "../assets/Coffees/Irlandes.png";
 
 export const COFFEES = [
   {
-    id: 1,
+    id: "6c5be920-543f-417a-90f5-9f12ab1b0778",
     image: ExpressoTradicional,
     tags: ["Tradicional"],
     title: "Expresso Tradicional",
@@ -23,7 +23,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 2,
+    id: "2e59c876-3c70-4cab-b804-53ab687b9b8e",
     image: ExpressoAmericano,
     tags: ["Tradicional"],
     title: "Expresso Americano",
@@ -31,7 +31,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 3,
+    id: "e6beb3ee-d3d9-4eeb-ac12-acf2ae801211",
     image: ExpressoCremoso,
     tags: ["Tradicional"],
     title: "Expresso Cremoso",
@@ -39,7 +39,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 4,
+    id: "ec714879-66b1-4f8a-8be2-3befc8a76ed1",
     image: ExpressoGelado,
     tags: ["Tradicional", "Gelado"],
     title: "Expresso Gelado",
@@ -47,7 +47,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 5,
+    id: "5139bead-561c-4674-8763-f2060091de9e",
     image: CafeComLeite,
     tags: ["Tradicional", "Com Leite"],
     title: "Café Com Leite",
@@ -55,7 +55,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 6,
+    id: "c1e4383e-85cc-402a-9852-6c0d7b89e789",
     image: Latte,
     tags: ["Tradicional", "Com Leite"],
     title: "Latte",
@@ -64,7 +64,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 7,
+    id: "4219c91b-4d58-46c7-8336-fc79f8617cec",
     image: Capuccino,
     tags: ["Tradicional", "Com Leite"],
     title: "Capuccino",
@@ -73,7 +73,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 8,
+    id: "5d04afb9-bf4b-4fd4-8d9d-2d385482047d",
     image: Macchiato,
     tags: ["Especial"],
     title: "Macchiato",
@@ -82,7 +82,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 8,
+    id: "18847de1-7903-45fa-8fe4-0a20eca9a3c4",
     image: Mocaccino,
     tags: ["Tradicional", "Com Leite"],
     title: "Mocaccino",
@@ -90,7 +90,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 9,
+    id: "cdda0000-59d6-4301-9c92-78b05744ec79",
     image: ChocolateQuente,
     tags: ["Especial", "Com Leite"],
     title: "Chocolate Quente",
@@ -98,7 +98,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 9,
+    id: "e6de1040-3a5e-48f9-afef-75dadf8e5172",
     image: Cubano,
     tags: ["Especial", "Alcoólico", "Gelado"],
     title: "Cubano",
@@ -107,7 +107,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 10,
+    id: "a50d9d55-9c12-4b4f-a672-e3c137b84e71",
     image: Havaiano,
     tags: ["Especial"],
     title: "Havaiano",
@@ -116,7 +116,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 11,
+    id: "18907254-a4ac-400c-a244-a6a53360962e",
     image: Arabe,
     tags: ["Especial"],
     title: "Árabe",
@@ -124,7 +124,7 @@ export const COFFEES = [
     price: 9.9,
   },
   {
-    id: 12,
+    id: "a0eb2678-da7a-4099-894b-fb17ccc4e7d1",
     image: Irlandes,
     tags: ["Especial"],
     title: "Irlandês",
