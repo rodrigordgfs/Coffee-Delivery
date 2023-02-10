@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { CoffeesList } from "./components/CoffeesList";
 import { OrderResumeTotal } from "./components/OrderResumeTotal";
 import {
@@ -8,11 +9,11 @@ import {
 } from "./styles";
 
 export function SelectedCoffees() {
-  const formCurrency = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-    minimumFractionDigits: 2,
-  });
+  const navigate = useNavigate();
+
+  function handleConfirmOrder() {
+    navigate("/success");
+  }
 
   return (
     <SelectedCoffeesContainer>
@@ -20,7 +21,9 @@ export function SelectedCoffees() {
       <OrderResumeContainer>
         <CoffeesList />
         <OrderResumeTotal />
-        <OrderResumeConfirmButton>Confirmar Pedido</OrderResumeConfirmButton>
+        <OrderResumeConfirmButton onClick={handleConfirmOrder}>
+          Confirmar Pedido
+        </OrderResumeConfirmButton>
       </OrderResumeContainer>
     </SelectedCoffeesContainer>
   );
