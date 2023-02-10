@@ -16,4 +16,8 @@ export const CheckoutWrapper = styled.section`
   padding: 0 0.5rem;
   margin-top: 2.5rem;
   gap: 2rem;
+
+  @media only screen and (max-device-width: 1024px) {
+    flex-direction: column;
+  }
 `;

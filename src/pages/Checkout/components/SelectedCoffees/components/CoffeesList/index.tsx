@@ -1,4 +1,5 @@
 import {
+  CoffeesListWrapper,
   ProductOrderItem,
   ProductOrderItemActions,
   ProductOrderItemContent,
@@ -43,8 +44,8 @@ export function CoffeesList() {
     <>
       {SELECTED_COFFEES.map((coffee) => {
         return (
-          <>
-            <ProductOrderItem key={coffee.id}>
+          <CoffeesListWrapper key={coffee.id}>
+            <ProductOrderItem>
               <ProductOrderItemImage src={coffee.image} />
               <ProductOrderItemContent>
                 <ProductOrderItemTitle>{coffee.name}</ProductOrderItemTitle>
@@ -71,7 +72,7 @@ export function CoffeesList() {
               </ProductOrderItemPrice>
             </ProductOrderItem>
             <ProductOrderItemDivider />
-          </>
+          </CoffeesListWrapper>
         );
       })}
     </>

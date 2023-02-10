@@ -37,6 +37,10 @@ export const DeliveryDetailsForm = styled.form`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
+
+  @media only screen and (max-device-width: 510px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const DeliveryDetailsFormInput = styled.input`

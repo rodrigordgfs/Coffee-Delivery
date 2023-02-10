@@ -37,6 +37,14 @@ export const PaymentMehodsList = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0.75rem;
   margin-top: 2rem;
+
+  @media only screen and (min-device-width: 510px) and (max-device-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media only screen and (max-device-width: 510px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const PaymentMehodsItem = styled.div`

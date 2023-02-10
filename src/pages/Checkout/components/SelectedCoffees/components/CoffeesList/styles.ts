@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const CoffeesListWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const ProductOrderItem = styled.div`
   display: flex;
   flex-direction: row;
@@ -7,6 +12,11 @@ export const ProductOrderItem = styled.div`
   gap: 1.25rem;
   padding: 8px 0.25rem;
   margin: 1rem 0;
+
+  @media only screen and (max-device-width: 510px) {
+    flex-direction: column;
+    gap: 16px;
+  }
 `;
 
 export const ProductOrderItemImage = styled.img`
@@ -27,6 +37,10 @@ export const ProductOrderItemTitle = styled.p`
   font-weight: 400;
   line-height: 130%;
   color: ${(props) => props.theme.subtitle};
+
+  @media only screen and (max-device-width: 510px) {
+    text-align: center;
+  }
 `;
 
 export const ProductOrderItemActions = styled.div`
