@@ -146,7 +146,7 @@ export const CoffeeCardQuantity = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 8px;
   background: ${(props) => props.theme.button};
   border-radius: 0.375rem;
   padding: 8px;

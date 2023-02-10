@@ -12,6 +12,7 @@ import Cubano from "../assets/Coffees/Cubano.png";
 import Havaiano from "../assets/Coffees/Havaiano.png";
 import Arabe from "../assets/Coffees/Arabe.png";
 import Irlandes from "../assets/Coffees/Irlandes.png";
+import { ICoffee } from "../interfaces/ICoffee";
 
 export const COFFEES = [
   {
@@ -131,4 +132,4 @@ export const COFFEES = [
     description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
     price: 9.9,
   },
-];
+] as ICoffee[];

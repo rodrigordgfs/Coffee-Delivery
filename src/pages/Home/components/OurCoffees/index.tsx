@@ -1,4 +1,3 @@
-import { COFFEES } from "../../../../utils/coffees";
 import {
   CoffeeCard,
   CoffeeCardActions,
@@ -16,59 +15,53 @@ import {
   OurCoffeesTitle,
   OurCoffeesWrapper,
 } from "./styles";
-import { useState } from "react";
+import { useContext } from "react";
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { CoffeesContext } from "../../../../context/Coffees";
+import { OrderContext } from "../../../../context/Order";
 
 export function OurCoffes() {
-  const [quantity, setQuantity] = useState(0);
+  const { coffees } = useContext(CoffeesContext);
+  const { addProduct, removeProduct, quantityOfProduct } =
+    useContext(OrderContext);
 
   const formCurrency = new Intl.NumberFormat("pt-BR", {
     currency: "BRL",
     minimumFractionDigits: 2,
   });
 
-  function addCoffee() {
-    setQuantity((oldQuantity) => oldQuantity + 1);
-  }
-
-  function removeCoffee() {
-    if (quantity >= 1) {
-      setQuantity((oldQuantity) => oldQuantity - 1);
-    }
-  }
-
   return (
     <OurCoffeesContainer>
       <OurCoffeesWrapper>
         <OurCoffeesTitle>Nossos Cafés</OurCoffeesTitle>
         <CoffeesContainer>
-          {COFFEES.map((coffee) => {
+          {coffees.map(({ id, image, tags, title, description, price }) => {
             return (
-              <CoffeeCard key={coffee.id}>
-                <img src={coffee.image} />
+              <CoffeeCard key={id}>
+                <img src={image} />
                 <CoffeeCardTags>
-                  {coffee.tags.map((tag) => {
+                  {tags.map((tag) => {
                     return (
                       <CoffeeCardTagsItem key={tag}>{tag}</CoffeeCardTagsItem>
                     );
                   })}
                 </CoffeeCardTags>
-                <CoffeeCardTitle>{coffee.title}</CoffeeCardTitle>
-                <CoffeeCardDescription>
-                  {coffee.description}
-                </CoffeeCardDescription>
+                <CoffeeCardTitle>{title}</CoffeeCardTitle>
+                <CoffeeCardDescription>{description}</CoffeeCardDescription>
                 <CoffeeCardActionsWrapper>
                   <CoffeeCardPrice>
                     <span>R$ </span>
-                    <span>{formCurrency.format(coffee.price)}</span>
+                    <span>{formCurrency.format(price)}</span>
                   </CoffeeCardPrice>
                   <CoffeeCardActions>
                     <CoffeeCardQuantity>
-                      <CoffeeCardQuantityButton onClick={removeCoffee}>
+                      <CoffeeCardQuantityButton
+                        onClick={() => removeProduct(id)}
+                      >
                         <Minus width={14} />
                       </CoffeeCardQuantityButton>
-                      <span>{quantity}</span>
-                      <CoffeeCardQuantityButton onClick={addCoffee}>
+                      <span>{quantityOfProduct(id)}</span>
+                      <CoffeeCardQuantityButton onClick={() => addProduct(id)}>
                         <Plus width={14} />
                       </CoffeeCardQuantityButton>
                     </CoffeeCardQuantity>
