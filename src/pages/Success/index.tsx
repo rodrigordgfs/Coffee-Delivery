@@ -13,8 +13,12 @@ import Deliver from "../../assets/deliver.svg";
 import LocationPurple from "../../assets/icons/LocationPurple.svg";
 import StopwatchYellow from "../../assets/icons/StopwatchYellow.svg";
 import DollarYellowDark from "../../assets/icons/DollarYellowDark.svg";
+import { useContext } from "react";
+import { OrderContext } from "../../context/Order";
 
 export function Success() {
+  const { payment, address } = useContext(OrderContext);
+
   return (
     <SuccessContainer>
       <SuccessWrapper>
@@ -28,9 +32,14 @@ export function Success() {
               <img src={LocationPurple} />
               <OrderDetailsListItemInfo>
                 <p>
-                  Entrega em <span>Rua João Daniel Martinelli, 102</span>
+                  Entrega em{" "}
+                  <span>
+                    Rua {address.rua}, {address.numero}
+                  </span>
                 </p>
-                <span>Farrapos - Porto Alegre, RS</span>
+                <span>
+                  {address.bairro} - {address.cidade}, {address.estado}
+                </span>
               </OrderDetailsListItemInfo>
             </OrderDetailsListItem>
             <OrderDetailsListItem>
@@ -44,7 +53,7 @@ export function Success() {
               <img src={DollarYellowDark} />
               <OrderDetailsListItemInfo>
                 <p>Pagamento na entrega</p>
-                <span>Cartão de Crédito</span>
+                <span>{payment.name}</span>
               </OrderDetailsListItemInfo>
             </OrderDetailsListItem>
           </OrderDetailsList>
