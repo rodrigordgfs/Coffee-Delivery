@@ -17,7 +17,7 @@ import ExpressoAmericano from "../../../../../../assets/Coffees/ExpressoAmerican
 import Capuccino from "../../../../../../assets/Coffees/Capuccino.png";
 import { useContext } from "react";
 import { OrderContext } from "../../../../../../context/Order";
-import currencyBRL from "../../../../../../utils/currencyFormat";
+import { formatCurrencyBRL } from "../../../../../../utils/currencyFormat";
 
 const SELECTED_COFFEES = [
   {
@@ -80,7 +80,7 @@ export function CoffeesList() {
                 </ProductOrderItemActions>
               </ProductOrderItemContent>
               <ProductOrderItemPrice>
-                {currencyBRL.format(Number(coffee.price))}
+                {formatCurrencyBRL.format(Number(coffee.price))}
               </ProductOrderItemPrice>
             </ProductOrderItem>
             <ProductOrderItemDivider />

@@ -31,7 +31,7 @@ export function SelectedCoffees() {
 
   return (
     <SelectedCoffeesContainer>
-      <SelectedCoffeesTitle>Selected Coffees</SelectedCoffeesTitle>
+      <SelectedCoffeesTitle>Cafés selecionados</SelectedCoffeesTitle>
 
       <OrderResumeContainer>
         {isProductsEmpty() ? (

@@ -5,7 +5,7 @@ import {
   OrderResumeTotalValue,
 } from "./styles";
 import { OrderContext } from "../../../../../../context/Order";
-import currencyBRL from "../../../../../../utils/currencyFormat";
+import { formatCurrencyBRL } from "../../../../../../utils/currencyFormat";
 
 export function OrderResumeTotal() {
   const { deliveryFee, totalAmmountProducts } = useContext(OrderContext);
@@ -14,15 +14,17 @@ export function OrderResumeTotal() {
     <OrderResumeTotalContainer>
       <OrderResumeTotalItem>
         <span>Total de itens</span>
-        <span>{currencyBRL.format(totalAmmountProducts())}</span>
+        <span>{formatCurrencyBRL.format(totalAmmountProducts())}</span>
       </OrderResumeTotalItem>
       <OrderResumeTotalItem>
         <span>Entrega</span>
-        <span>{currencyBRL.format(deliveryFee)}</span>
+        <span>{formatCurrencyBRL.format(deliveryFee)}</span>
       </OrderResumeTotalItem>
       <OrderResumeTotalValue>
         <span>Total</span>
-        <span>{currencyBRL.format(deliveryFee + totalAmmountProducts())}</span>
+        <span>
+          {formatCurrencyBRL.format(deliveryFee + totalAmmountProducts())}
+        </span>
       </OrderResumeTotalValue>
     </OrderResumeTotalContainer>
   );

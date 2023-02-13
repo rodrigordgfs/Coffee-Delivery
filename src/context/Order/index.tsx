@@ -9,21 +9,23 @@ import { IProduct } from "../../interfaces/IProduct";
 import { IAddress } from "../../interfaces/IAddress";
 import { IPaymentMethod } from "../../interfaces/IPaymentMethod";
 import { CoffeesContext } from "../Coffees";
+import { PAYMENT_METHODS } from "../../utils/paymentMethods";
 
 interface IOrderContext {
   products: IProduct[];
   address: IAddress;
   payment: IPaymentMethod;
+  insertOrUpdateProduct: (coffeeID: string, quantity: number) => void;
+  productsQuantity: () => number;
   increaseProduct: (coffeeID: string) => void;
   decreaseProduct: (coffeeID: string) => void;
-  quantityOfProduct: (coffeeID: string) => number;
-  productsQuantity: () => number;
   selectedProductsList: () => IProduct[];
   removeProduct: (coffeeID: string) => void;
   deliveryFee: number;
   totalAmmountProducts: () => number;
   fillAddress: (data: IAddress) => void;
   isProductsEmpty: () => boolean;
+  selectPaymentMethod: (paymentMethodID: string) => void;
 }
 
 interface IOrderContextProps {
@@ -43,6 +45,16 @@ export function OrderContextProvider({ children }: IOrderContextProps) {
 
   function isProductsEmpty() {
     return products.length === 0;
+  }
+
+  function insertOrUpdateProduct(coffeeID: string, quantity: number) {
+    const product = products.find((product) => product.coffeeID === coffeeID);
+    if (product) {
+      product.quantity += quantity;
+      setProducts([...products]);
+    } else {
+      setProducts([...products, { coffeeID, quantity }]);
+    }
   }
 
   function increaseProduct(coffeeID: string) {
@@ -71,11 +83,6 @@ export function OrderContextProvider({ children }: IOrderContextProps) {
 
   function removeProduct(coffeeID: string) {
     setProducts(products.filter((product) => product.coffeeID !== coffeeID));
-  }
-
-  function quantityOfProduct(coffeeID: string) {
-    const product = products.find((product) => product.coffeeID === coffeeID);
-    return product ? product.quantity : 0;
   }
 
   function productsQuantity() {
@@ -111,22 +118,32 @@ export function OrderContextProvider({ children }: IOrderContextProps) {
     setAddress((prev) => ({ ...prev, ...value }));
   }
 
+  function selectPaymentMethod(paymentMethodID: string) {
+    const paymentMethod = PAYMENT_METHODS.find(
+      (paymentMethod) => paymentMethod.id === paymentMethodID
+    );
+    if (paymentMethod) {
+      setPayment(paymentMethod);
+    }
+  }
+
   return (
     <OrderContext.Provider
       value={{
         products,
         address,
         payment,
+        insertOrUpdateProduct,
+        productsQuantity,
         increaseProduct,
         decreaseProduct,
-        quantityOfProduct,
-        productsQuantity,
         selectedProductsList,
         removeProduct,
         deliveryFee,
         totalAmmountProducts,
         fillAddress,
         isProductsEmpty,
+        selectPaymentMethod,
       }}
     >
       {children}
