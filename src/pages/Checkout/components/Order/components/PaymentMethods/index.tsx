@@ -1,12 +1,12 @@
 import {
   PaymentMehodsHeader,
   PaymentMehodsHeaderContent,
-  PaymentMehodsItem,
   PaymentMehodsList,
   PaymentMehodsWrapper,
 } from "./styles";
 import Dollar from "../../../../../../assets/icons/Dollar.svg";
 import { PAYMENT_METHODS } from "../../../../../../utils/paymentMethods";
+import { PaymentMethodCard } from "./PaymentMethosCard";
 
 export function PaymentMethods() {
   return (
@@ -21,13 +21,8 @@ export function PaymentMethods() {
         </PaymentMehodsHeaderContent>
       </PaymentMehodsHeader>
       <PaymentMehodsList>
-        {PAYMENT_METHODS.map((paymentMethod) => {
-          return (
-            <PaymentMehodsItem key={paymentMethod.id}>
-              <img src={paymentMethod.icon} />
-              <span>{paymentMethod.name}</span>
-            </PaymentMehodsItem>
-          );
+        {PAYMENT_METHODS.map(({ id, name, icon }) => {
+          return <PaymentMethodCard key={id} id={id} icon={icon} name={name} />;
         })}
       </PaymentMehodsList>
     </PaymentMehodsWrapper>
